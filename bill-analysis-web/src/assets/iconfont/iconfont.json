@@ -1,0 +1,16 @@
+{
+  "id": "1877830",
+  "name": "bship-bf",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "14006953",
+      "name": "icon_yil",
+      "font_class": "icon_yil",
+      "unicode": "e719",
+      "unicode_decimal": 59161
+    }
+  ]
+}
