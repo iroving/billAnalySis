@@ -11,8 +11,8 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/bship-bf': {
-        target: 'http://127.0.0.1:8081',  // 接口域名
+      '/bill-analysis': {
+        target: 'http://127.0.0.1:8080',  // 接口域名
         secure: false,  // 如果是https接口，需要配置这个参数
         changeOrigin: true,  //是否跨域
         pathRewrite: {
@@ -24,7 +24,7 @@ module.exports = {
     // Various Dev Server settings
     host: '127.0.0.1', // can be overwritten by process.env.HOST
     //host: '10.0.38.32', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 8081, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,

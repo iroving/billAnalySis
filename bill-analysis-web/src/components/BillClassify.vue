@@ -30,7 +30,7 @@
     </div>
     <div style="float:left;margin-top: 90px;width: 1px;height: 1000px;  background-image: linear-gradient(rgba(255,255,255,0.1), rgba(204,204,204,1), rgba(255,255,255,0.1));"></div>
     <div style="width: 16.5667%;float: left;">
-      <h1 href="#" class="category" style="font-size: 32px;margin:0 auto;width: 160px;display: block;font-family: 'Microsoft YaHei'">  宝&nbsp;&nbsp;&nbsp;宝 </h1>
+      <h1 href="#" class="category" style="font-size: 32px;margin:0 auto;width: 160px;display: block;font-family: 'Microsoft YaHei'">  宝&nbsp;&nbsp;&nbsp;宝 {{childTotal}}</h1>
       <draggable class="list-group" :list="child" group="goods" tag="ul"
                  :animation='200' filter=".unDraggable">
         <transition-group name='flip-list'>
@@ -49,7 +49,7 @@
     </div>
     <div style="float:left;margin-top: 90px;width: 1px;height: 1000px;  background-image: linear-gradient(rgba(255,255,255,0.1), rgba(204,204,204,1), rgba(255,255,255,0.1));"></div>
     <div style="width: 16.5667%;float: left;">
-      <h1 href="#" class="category" style="font-size: 32px;margin:0 auto;width: 160px;display: block;font-family: 'Microsoft YaHei'">  生&nbsp;活&nbsp;费 </h1>
+      <h1 href="#" class="category" style="font-size: 32px;margin:0 auto;width: 160px;display: block;font-family: 'Microsoft YaHei'">  生&nbsp;活&nbsp;费 {{lifeTotal}}</h1>
       <draggable class="list-group" :list="life" group="goods" tag="ul"
                  :animation='200' filter=".unDraggable">
         <transition-group name='flip-list'>
@@ -69,7 +69,7 @@
 
     <div style="float:left;margin-top: 90px;width: 1px;height: 1000px;  background-image: linear-gradient(rgba(255,255,255,0.1), rgba(204,204,204,1), rgba(255,255,255,0.1));"></div>
     <div style="width: 16.5667%;float: left;">
-      <h1 href="#" class="category" style="font-size: 32px;margin:0 auto;width: 160px;display: block;font-family: 'Microsoft YaHei'">  老&nbsp;&nbsp;&nbsp;婆 </h1>
+      <h1 href="#" class="category" style="font-size: 32px;margin:0 auto;width: 160px;display: block;font-family: 'Microsoft YaHei'">  老&nbsp;&nbsp;&nbsp;婆 {{wifeTotal}}</h1>
       <draggable class="list-group" :list="wife" group="goods" tag="ul"
                  :animation='200' filter=".unDraggable">
         <transition-group name='flip-list'>
@@ -89,7 +89,7 @@
 
     <div style="float:left;margin-top: 90px;width: 1px;height: 1000px;  background-image: linear-gradient(rgba(255,255,255,0.1), rgba(204,204,204,1), rgba(255,255,255,0.1));"></div>
     <div style="width: 16.5667%;float: left;">
-      <h1 href="#" class="category" style="font-size: 32px;margin:0 auto;width: 160px;display: block;font-family: 'Microsoft YaHei'">  老&nbsp;&nbsp;&nbsp;公 </h1>
+      <h1 href="#" class="category" style="font-size: 32px;margin:0 auto;width: 160px;display: block;font-family: 'Microsoft YaHei'">  老&nbsp;&nbsp;&nbsp;公 {{husbandTotal}}</h1>
       <draggable class="list-group" :list="husband" group="goods" tag="ul"
                  :animation='200' filter=".unDraggable">
         <transition-group name='flip-list'>
@@ -109,7 +109,7 @@
 
     <div style="float:left;margin-top: 90px;width: 1px;height: 1000px;  background-image: linear-gradient(rgba(255,255,255,0.1), rgba(204,204,204,1), rgba(255,255,255,0.1));"></div>
     <div style="width: 16.5667%;float: left;">
-      <h1 href="#" class="category" style="font-size: 28px;margin:0 auto;width: 160px;display: block;font-family: 'Microsoft YaHei'">  人情往来 </h1>
+      <h1 href="#" class="category" style="font-size: 28px;margin:0 auto;width: 160px;display: block;font-family: 'Microsoft YaHei'">  人情往来 {{favorTotal}}</h1>
       <draggable class="list-group" :list="favor" group="goods" tag="ul"
                  :animation='200' filter=".unDraggable">
         <transition-group name='flip-list'>
@@ -131,7 +131,8 @@
 </template>
 
 <script>
-  import draggable from 'vuedraggable'
+  import draggable from 'vuedraggable';
+  import test from '../request/test';
 
   export default {
     components: {
@@ -139,37 +140,46 @@
     },
     data() {
       return {
-        list1: [{id: 1, name: "haha", title: "title1", description: "description1"},
-          {id: 2, name: "haha2", title: "title2", description: "description1"},
-          {id: 3, name: "haha3", title: "title3", description: "description1"},
-          {id: 4, name: "haha4", title: "title4", description: "description1"}],
-        list2: [{id: 1, name: "haha", title: "title5", description: "description1"},
-          {id: 2, name: "haha2", title: "title6", description: "description1"},
-          {id: 3, name: "haha3", title: "title7", description: "description1"},
-          {id: 4, name: "haha4", title: "title8", description: "description1"}],
-        goods: [
-          {
-            to: "天弘基金管理有限公司",
-            goodName: "大码女装2020夏季新款胖mm宽松显瘦连衣裙娃娃领气质裙减龄洋气潮",
-            price: "358.27",
-            orderTime: "2020/8/31 13:19"
-          },
-          {to: "源敏贸易集团", goodName: "室外户外花箱防腐木花箱长方形花盆阳台露台种菜种树箱特大号花盆", price: "116.1", orderTime: "2020/8/31 13:19"},
-          {to: "天弘基金管理有限公司", goodName: "欧式室内花盆架多层描金花架白色花几仿实木落地客厅阳台置物架", price: "148.26", orderTime: "2020/8/31 13:19"},
-          {
-            to: "芽芽乐旗舰店",
-            goodName: "金龙鱼乳玉皇妃稻香贡米5kg 正宗东北大米 米饭 煮粥 超值10斤装 等多件",
-            price: "221.25",
-            orderTime: "2020/8/31 13:19"
-          },
-          {to: "宝宝馋了旗舰店", goodName: "Roland罗朗德黑芝麻酱350g婴幼儿食用高钙高铁营养辅食宝宝拌饭料", price: "128", orderTime: "2020/8/31 13:19"},
-          {to: "秋田满满旗舰店", goodName: "辅食添加调味料海苔粉猪肝粉儿童淡干虾皮香菇粉搭配宝宝婴儿辅食", price: "99.9", orderTime: "2020/8/31 13:19"},
-        ],
-        child: [{to: "XX", goodName: "将货物拖到这边", price: "xxx", orderTime: "xxxx/xx/xx xx:xx",dragAble:"unDraggable"}],
-        life: [{to: "XX", goodName: "将货物拖到这边", price: "xxx", orderTime: "xxxx/xx/xx xx:xx",dragAble:"unDraggable"}],
-        wife: [{to: "XX", goodName: "将货物拖到这边", price: "xxx", orderTime: "xxxx/xx/xx xx:xx",dragAble:"unDraggable"}],
-        husband: [{to: "XX", goodName: "将货物拖到这边", price: "xxx", orderTime: "xxxx/xx/xx xx:xx",dragAble:"unDraggable"}],
-        favor: [{to: "XX", goodName: "将货物拖到这边", price: "xxx", orderTime: "xxxx/xx/xx xx:xx",dragAble:"unDraggable"}],
+        // list1: [{id: 1, name: "haha", title: "title1", description: "description1"},
+        //   {id: 2, name: "haha2", title: "title2", description: "description1"},
+        //   {id: 3, name: "haha3", title: "title3", description: "description1"},
+        //   {id: 4, name: "haha4", title: "title4", description: "description1"}],
+        // list2: [{id: 1, name: "haha", title: "title5", description: "description1"},
+        //   {id: 2, name: "haha2", title: "title6", description: "description1"},
+        //   {id: 3, name: "haha3", title: "title7", description: "description1"},
+        //   {id: 4, name: "haha4", title: "title8", description: "description1"}],
+
+
+        goods: [],
+        // goods: [
+        //   {
+        //     to: "天弘基金管理有限公司",
+        //     goodName: "大码女装2020夏季新款胖mm宽松显瘦连衣裙娃娃领气质裙减龄洋气潮",
+        //     price: "358.27",
+        //     orderTime: "2020/8/31 13:19"
+        //   },
+        //   {to: "源敏贸易集团", goodName: "室外户外花箱防腐木花箱长方形花盆阳台露台种菜种树箱特大号花盆", price: "116.1", orderTime: "2020/8/31 13:19"},
+        //   {to: "天弘基金管理有限公司", goodName: "欧式室内花盆架多层描金花架白色花几仿实木落地客厅阳台置物架", price: "148.26", orderTime: "2020/8/31 13:19"},
+        //   {
+        //     to: "芽芽乐旗舰店",
+        //     goodName: "金龙鱼乳玉皇妃稻香贡米5kg 正宗东北大米 米饭 煮粥 超值10斤装 等多件",
+        //     price: "221.25",
+        //     orderTime: "2020/8/31 13:19"
+        //   },
+        //   {to: "宝宝馋了旗舰店", goodName: "Roland罗朗德黑芝麻酱350g婴幼儿食用高钙高铁营养辅食宝宝拌饭料", price: "128", orderTime: "2020/8/31 13:19"},
+        //   {to: "秋田满满旗舰店", goodName: "辅食添加调味料海苔粉猪肝粉儿童淡干虾皮香菇粉搭配宝宝婴儿辅食", price: "99.9", orderTime: "2020/8/31 13:19"},
+        // ],
+        child: [{to: "XX", goodName: "将货物拖到这边", price: 0, orderTime: "xxxx/xx/xx xx:xx", dragAble: "unDraggable"}],
+        life: [{to: "XX", goodName: "将货物拖到这边", price: 0, orderTime: "xxxx/xx/xx xx:xx", dragAble: "unDraggable"}],
+        wife: [{to: "XX", goodName: "将货物拖到这边", price: 0, orderTime: "xxxx/xx/xx xx:xx", dragAble: "unDraggable"}],
+        husband: [{
+          to: "XX",
+          goodName: "将货物拖到这边",
+          price: 0,
+          orderTime: "xxxx/xx/xx xx:xx",
+          dragAble: "unDraggable"
+        }],
+        favor: [{to: "XX", goodName: "将货物拖到这边", price: 0, orderTime: "xxxx/xx/xx xx:xx", dragAble: "unDraggable"}],
 
 
         getComponentData: {
@@ -186,7 +196,7 @@
           }
         }
 
-      }
+      };
     },
     methods: {
       handleChange() {
@@ -194,6 +204,70 @@
       },
       inputChanged(value) {
         this.activeNames = value;
+      },
+      loadGoods() {
+        let param = {
+          date: "2020-07",
+        };
+        test.listBillOriginal(param).then((res) => {
+          res.forEach((item,index,array)=>{
+            // to: "天弘基金管理有限公司",
+            //   goodName: "大码女装2020夏季新款胖mm宽松显瘦连衣裙娃娃领气质裙减龄洋气潮",
+            //   price: "358.27",
+            //   orderTime: "2020/8/31 13:19"
+            var itemCopy=item;
+            itemCopy.to = item.payTo;
+            itemCopy.goodName = item.goodName;
+            itemCopy.price = item.price;
+            itemCopy.orderTime = item.payTime;
+            this.goods.push(itemCopy);
+          });
+
+          console.log(res);
+            // this.$message.warning("获取数据失败")
+        }).catch((err) => {
+          console.log(err)
+        });
+      },
+    },
+    mounted() {
+      this.loadGoods();
+    },
+    computed:{
+      childTotal:function () {
+        var total=0;
+        this.child.forEach((item,index,array)=>{
+          total += item.price;
+        });
+        return total;
+      },
+      lifeTotal:function () {
+        var total=0;
+        this.life.forEach((item,index,array)=>{
+          total += item.price;
+        });
+        return total;
+      },
+      wifeTotal:function () {
+        var total=0;
+        this.wife.forEach((item,index,array)=>{
+          total += item.price;
+        });
+        return total;
+      },
+      husbandTotal:function () {
+        var total=0;
+        this.husband.forEach((item,index,array)=>{
+          total += item.price;
+        });
+        return total;
+      },
+      favorTotal:function () {
+        var total=0;
+        this.favor.forEach((item,index,array)=>{
+          total += item.price;
+        });
+        return total;
       },
     },
     name: "BillClassify"
