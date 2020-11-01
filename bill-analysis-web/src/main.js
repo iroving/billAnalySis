@@ -7,6 +7,9 @@ import 'babel-polyfill'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/iconfont/iconfont.css';
 
+import axios from 'axios'
+Vue.prototype.$axios = axios
+
 // 阻止vue的一些消息
 Vue.config.productionTip = false;
 

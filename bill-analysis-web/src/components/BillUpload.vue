@@ -8,9 +8,12 @@
     multiple
     :limit="3"
     :on-exceed="handleExceed"
-    :file-list="fileList">
+    :file-list="fileList"
+    :on-success="afterUpload"
+    :on-error="errorLoad"
+  >
     <el-button size="small" type="primary">点击上传</el-button>
-    <div slot="tip" class="el-upload__tip">只能上传csv文件</div>
+    <div slot="tip" class="el-upload__tip">只能上传csv文件，并且文件的名字命名为2020-10这样</div>
   </el-upload>
 </template>
 
@@ -34,7 +37,14 @@
       },
       beforeRemove(file, fileList) {
         return this.$confirm(`确定移除 ${ file.name }？`);
+      },
+      afterUpload(response, file, fileList){
+        this.$message.success("账单上传成功！");
+      },
+      errorLoad(err, file, fileList) {
+        this.$message.error("账单上传失败：" + err);
       }
+
     }
   }
 </script>

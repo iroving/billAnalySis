@@ -1,4 +1,4 @@
-package com.iroving.billanalysis;
+package com.iroving.billanalysis.bean;
 
 import cn.hutool.core.annotation.Alias;
 import lombok.Data;
@@ -8,8 +8,31 @@ import java.time.LocalDateTime;
 
 @Data
 public class AliRecord implements Serializable {
-
     private static final long serialVersionUID = 2290194403366603942L;
+    /**
+     * 支付宝有几种装填
+     * 退款成功
+     * 交易关闭
+     * 交易成功
+     */
+    public static final String PAY_STATUS_SUCCESS = "交易成功";
+
+    /**
+     * 支付类型
+     */
+    public static final String PAY_TYPE_PAYOUT = "支出";
+
+    /**
+     * 收入
+     */
+    public static final String PAY_TYPE_EARNING = "收入";
+
+    /**
+     * 余额宝
+     */
+    public static final String GOOD_NAME_EXTRA = "余额宝";
+
+
     @Alias("交易号")
     private String serialNo;
     @Alias("商家订单号")
